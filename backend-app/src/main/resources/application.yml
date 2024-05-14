@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://172.17.0.2:3306/news_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql-docker/news_db?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
