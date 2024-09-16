@@ -1,0 +1,23 @@
+services:
+  db_mysql:                     
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql   
+    restart: always             
+    environment:                
+      MYSQL_ROOT_PASSWORD: root  
+      MYSQL_USER: dev           
+      MYSQL_PASSWORD: secret
+    ports:
+      - 8083:3306              
+  api:                          
+    depends_on:                  
+      - db_mysql
+    build: ./backend-app
+    ports:
+      - 8081:8080
+    restart: on-failure
+    volumes:
+      - .m2:/root/.m2
+volumes:
+  db_data: {}
